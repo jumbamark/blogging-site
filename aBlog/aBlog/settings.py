@@ -123,14 +123,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+# URL to use when referring to files located in STATIC_ROOT
 STATIC_URL = '/static/'
-#
+
+# URL that handles media served from MEDIA_ROOT
 MEDIA_URL = '/media/'
 
 # how to create the url path of our media stuff
 MEDIA_ROOT = BASE_DIR/'media'
 # MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
+# additional locations the staticfiles app will traverse if the FileSystemFinder finder is enabled
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
