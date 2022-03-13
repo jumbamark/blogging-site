@@ -4,5 +4,3 @@ A blogging site that allows users to add blogs and categories. It has sign up an
 ### Built With
 * Django
 * Bootstrap
-
-[View site](https://www.github.com/)
