@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %} Login {%endblock title%}
+{% block content %}
+
+<h1 class="mb-5">Login</h1>
+
+<div class="form-group">
+    <!-- cross site request forgery token -->
+    <form method="POST"> {% csrf_token %}
+        <div class="mb-3">
+            <input type="text" class="form-control" name="username" placeholder="Username">
+        </div>
+        <div class="mb-3">
+            <input type="password" class="form-control" name="password" placeholder="Password">
+            <div id="emailHelp" class="form-text">Your details are safe.</div>
+        </div>
+        <button class="btn btn-secondary my-3">
+            Login
+        </button>
+        <p>
+            Not Registerd?
+            <span style="margin-left:2em;">Sign Up <a href="{% url 'registrationPage' %}">here</a></span>
+       </p>
+    </form>
+</div>
+
+
+{% endblock content %}

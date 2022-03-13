@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %} Edit Profile {%endblock title%}
+{% block content %}
+
+<h1 class="mb-5">Edit Settings</h1>
+
+<div class="my-3">
+    {{ user.profile.bio }}
+</div>
+
+<div class="form-group">
+    <!-- cross site request forgery token -->
+    <form method="POST"> {% csrf_token %}
+        <!-- using the django form system -->
+        {{form.as_p}}
+        <button class="btn btn-secondary">
+            Edit Profile
+        </button>
+    </form>
+</div>
+
+
+{% endblock content %}

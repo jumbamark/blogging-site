@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<h1>User Profile</h1>
+
+<div class="card mb-3 mt-5"">
+    <div class=" row g-0">
+    <div class="col-md-2">
+        {% if Page_user.profile_pic %}
+        <img style="height:120px; border-radius: 50%;" class="p-2" src="{{Page_user.profile_pic.url}}">
+        {% else %}
+        <img style="height:120px; border-radius: 50%;" class="p-2" src="{ static 'theBlog/images/default.jpeg' }">
+        {% endif %}
+    </div>
+    <div class="col-md-10">
+        <div class="card-body">
+            <h5 class="card-title">
+                {{Page_user.user.first_name}} {{Page_user.user.last_name}}
+            </h5>
+
+            <p class="small text-muted">
+                {% if Page_user.twitter %}
+                <a href="{{Page_user.twitter}}">Twtter |</a>
+                {% endif %}
+                {% if Page_user.instagram %}
+                <a href="{{Page_user.instagram}}">Instagram |</a>
+                {% endif %}
+                {% if Page_user.telegram %}
+                <a href="{{Page_user.telegram}}">Telegram</a>
+                {% endif %}
+            </p>
+
+            <p class="card-text">{{Page_user.bio}}</p>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
