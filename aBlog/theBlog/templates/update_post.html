@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %} Edit blog post {%endblock title%}
+{% block content %}
+
+{% if user.is_authenticated %}
+
+{% if user.id == post.author.id %}
+<h1 class="mb-5">Update Blog Post</h1>
+
+<div class="form-group">
+    <!-- cross site request forgery token -->
+    <form method="POST"> {% csrf_token %}
+        <!-- for ckeditor -->
+        {{form.media}}
+        <!-- using the django form system -->
+        {{form.as_p}}
+        <button class="btn btn-secondary">
+            Edit
+        </button>
+    </form>
+</div>
+{% else %}
+You can only edit your own blog
+{% endif %}
+
+{% else%}
+You're not allowed here! (and you know it..)
+{% endif %}
+
+{% endblock content %}

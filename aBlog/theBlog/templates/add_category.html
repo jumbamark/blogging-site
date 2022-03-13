@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %} Create a new blog category {%endblock title%}
+{% block content %}
+
+{% if user.is_authenticated %}
+<h1 class="mb-5">Add Category</h1>
+
+<div class="form-group">
+    <!-- cross site request forgery token -->
+    <form method="POST"> {% csrf_token %}
+        <!-- using the django form system -->
+        {{form.as_p}}
+        <button class="btn btn-secondary">
+            Add Category
+        </button>
+    </form>
+</div>
+{% else%}
+Get the fuck outta here
+{% endif %}
+
+
+{% endblock content %}

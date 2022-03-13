@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %} Create a new blog post {%endblock title%}
+{% block content %}
+
+{% if user.is_authenticated %}
+<h1 class="mb-5">Add Blog Post</h1>
+
+<div class="form-group">
+
+    <!-- cross site request forgery token -->
+    <!-- enc (encoding- we need to be able to tell our form hey it's ok to accept images, and images are diffferent type of data and they have diff encoding, so we have to allow that sort of encoding in our form -->
+
+    <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+        <!-- for ckeditor -->
+        {{form.media}}
+        <!-- using the django form system -->
+        {{form.as_p}}
+        <button class="btn btn-secondary">
+            Post
+        </button>
+    </form>
+</div>
+
+<script>
+    let name = "{{ user.id  }}";
+    document.getElementById("author-field").value = name;
+</script>
+
+{% else%}
+Get the fuck outta here
+{% endif %}
+
+
+{% endblock content %}

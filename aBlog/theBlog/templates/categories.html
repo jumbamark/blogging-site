@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if Category_posts %}
+
+<h1> {{Cats}} Category</h1>
+
+<ul>
+    {% for post in Category_posts %}
+    <li class="mb-3">
+        <a href="{% url 'articles' post.pk %}">{{ post.title }}</a> -{{ post.author.first_name }}
+        {{ post.author.last_name }} - {{ post.author.email }} <br>
+        {{ post.body|slice:":200"| safe }}
+
+        {% if user.is_authenticated %}
+        <div> <a href="{% url 'updateBlog' post.pk %}">Edit</a> </div>
+        <div> <a href="{% url 'deleteBlog' post.pk %}">Delete</a> </div>
+        {% endif %}
+
+    </li>
+    {% endfor %}
+</ul>
+
+{% else %}
+<h2>Sorry this page does not exist</h2>
+{% endif %}
+
+{% endblock content %}

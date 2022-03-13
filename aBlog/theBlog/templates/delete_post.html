@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %} Delete blog post {%endblock title%}
+{% block content %}
+
+{% if user.is_authenticated %}
+
+{% if user.id == post.author.id %}
+<h1 class="mb-5">Delete Blog Post</h1>
+<h3 class="my-3">Delete: {{post.title}} </h3>
+<div class="form-group">
+    <!-- cross site request forgery token -->
+    <form method="POST"> {% csrf_token %}
+        <!-- using the django form system -->
+        <div class="mb-2">
+            <strong>Are you sure?!</strong>
+        </div>
+        <button class="btn btn-secondary">
+            Delete
+        </button>
+    </form>
+</div>
+{% else%}
+You don't get to delete what you didn't create
+{% endif %}
+
+{% else%}
+Get some life pal
+{% endif %}
+
+
+{% endblock content %}
