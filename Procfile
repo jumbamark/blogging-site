@@ -1,0 +1,1 @@
+web: gunicorn aBlog/aBlog.wsgi
